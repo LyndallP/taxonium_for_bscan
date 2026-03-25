@@ -1,6 +1,6 @@
 import type { Node, Mutation } from "./node";
 import type React from "react";
-import type { ColorRamps } from "./common";
+import type { ColorRamps, ColorPalettes } from "./common";
 
 export interface SearchType {
   name: string;
@@ -44,6 +44,7 @@ export interface Config {
   mutations?: Mutation[];
   useHydratedMutations?: boolean;
   colorRamps?: ColorRamps;
+  colorPalettes?: ColorPalettes;
   colorBy?: {
     colorByOptions: string[];
   };

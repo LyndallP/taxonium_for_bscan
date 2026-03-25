@@ -11,6 +11,10 @@ export interface ColorRamps {
   [key: string]: ColorRamp;
 }
 
+export interface ColorPalettes {
+  [key: string]: string[];
+}
+
 
 
 export interface HoverInfo<T> {

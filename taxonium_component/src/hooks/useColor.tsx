@@ -57,6 +57,20 @@ const useColor = (
         return colorMapping[value];
       }
 
+      if (typeof value === "string" && config.colorPalettes && config.colorPalettes[colorByField]) {
+        const palette = config.colorPalettes[colorByField];
+        let str = String(value);
+        str = str.split("").reverse().join("");
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          hash = str.charCodeAt(i) + ((hash << 5) - hash);
+          hash = hash & hash;
+        }
+        const idx = Math.abs(hash) % palette.length;
+        const hex = palette[idx];
+        return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)];
+      }
+
       const amino_acids: Record<string, [number, number, number]> = {
         A: [230, 25, 75],
         R: [60, 180, 75],
